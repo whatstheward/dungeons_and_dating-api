@@ -1,6 +1,4 @@
 class Relationship < ApplicationRecord
-  belongs_to :user_character
-  belongs_to :character 
-  
-  validates_uniqueness_of :character_id, :scope => :user_character_id
+    belongs_to :interest, class_name: 'Character'
+    belongs_to :suitor, class_name: 'Character'
 end

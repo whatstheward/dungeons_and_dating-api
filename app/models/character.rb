@@ -1,9 +1,5 @@
 class Character < ApplicationRecord
-  has_many :character_genders
-  has_many :genders, through: :character_genders
-  has_many :character_orientations
-  has_many :orientations, through: :character_orientations
-  has_many :character_dates
-  has_many :abilities
-  has_many :relationships
+    belongs_to :user
+    has_many :interests, foreign_key: :interest_id, class_name: 'Relationship'
+    has_many :suitors, through: :interests
 end

@@ -2,14 +2,16 @@
 
 one:
   name: MyString
+  belongs_to: 
+  character_class: MyString
   race: MyString
-  class: MyString
   bio: MyString
   img: MyString
 
 two:
   name: MyString
+  belongs_to: 
+  character_class: MyString
   race: MyString
-  class: MyString
   bio: MyString
   img: MyString

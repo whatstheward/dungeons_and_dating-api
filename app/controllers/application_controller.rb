@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::API
     before_action :authorize!
+
     def current_user
         token = request.headers['auth-token']
         return nil unless token

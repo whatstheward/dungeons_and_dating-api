@@ -6,4 +6,5 @@ Rails.application.routes.draw do
 
     resources :characters, only:[:index, :show]
     resources :sessions, only: [:create, :destroy]
+    resources :images, only: [:index]
   end

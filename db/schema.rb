@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_28_141735) do
+ActiveRecord::Schema.define(version: 2020_05_06_153926) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +21,14 @@ ActiveRecord::Schema.define(version: 2020_04_28_141735) do
     t.string "character_class"
     t.string "race"
     t.string "bio"
-    t.string "img"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "image_id"
     t.index ["user_id"], name: "index_characters_on_user_id"
+  end
+
+  create_table "images", force: :cascade do |t|
+    t.string "url"
   end
 
   create_table "relationships", force: :cascade do |t|

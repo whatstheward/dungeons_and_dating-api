@@ -5,5 +5,12 @@ class UserSerializer
     "#{object.first_name} #{object.last_name}"
   end
   attributes :email
-  has_many :characters
+
+  attribute :characters do |obj|
+    obj.characters.map do |char| 
+      charObj = char.attributes
+      charObj["image"] = char.image.url
+      {attributes: charObj}
+    end
+  end
 end

@@ -22,9 +22,24 @@ class CharactersController < ApplicationController
         end
     end
 
+    def create
+        @character = Character.new(character_params)
+        @character.user_id = params[:user_id]
+        if @character.save
+            @character.create_stat(stat_params)
+            render json: CharacterSerializer.new(@character).serialized_json
+        else
+            render json: {errors: @character.errors.full_messages}
+        end
+    end
+
     private
 
     def character_params
-        params.require(:character).permit(:name, :user_id, :race, :character_class, :bio, :img)
+        params.require(:options).permit(:name, :user_id, :race, :character_class, :bio, :image_id)
+    end
+
+    def stat_params
+        params[:options][:stats].permit!
     end
 end

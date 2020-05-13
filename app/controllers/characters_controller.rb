@@ -5,8 +5,7 @@ class CharactersController < ApplicationController
             @user = User.find_by(id: params[:user_id])
             render json: CharacterSerializer.new(@user.characters).serialized_json
         else
-            @characters = Character.all
-
+            @characters = Character.except_user(current_user)
             render json: CharacterSerializer.new(@characters).serialized_json
         end
     end

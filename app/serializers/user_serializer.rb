@@ -10,7 +10,16 @@ class UserSerializer
     obj.characters.map do |char| 
       charObj = char.attributes
       charObj["image"] = char.image.url
+      charObj["relationships"] = char.suitors
       {attributes: charObj}
     end
+  end
+
+  attribute :relationships do |obj|
+    obj.characters.map{|char| char.suitors.count}.reduce(:+)
+  end
+
+  attribute :best_relationship do |obj|
+    obj.best_relationship
   end
 end
